@@ -1,0 +1,14 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - openssl ...
+    - curl https://sdk.cloud.google.com | bash > /dev/null;
+    - source $HOME/google-cloud-sdk/path.bash.inc
+    - gcloud components update kubectl
+    - gcloud auth active-service-account --keyfile service-account.json
+    - gcloud config set project artful-tractor-292513
+    - gcloud config set compute/zone ....
+    - gcloud container clusters get-credentials fib-cluster
+
